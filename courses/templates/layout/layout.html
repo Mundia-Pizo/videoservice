@@ -1,0 +1,20 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code made Simple</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href={% static 'main.css'%}>
+</head>
+<body>
+    {% include "layout/navbar.html"%}
+    <div class="col-md-9 mx-auto m-auto">
+        {%block content%} {%endblock content%}
+    </div>
+    <hr/>
+    {% include 'layout/footer.html'%}
+</body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</html>

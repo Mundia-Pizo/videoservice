@@ -1,0 +1,12 @@
+{%  extends "layout/layout.html"%}
+{%load crispy_forms_tags%}
+{%block content%}
+<div class="mt-5">
+   <form action="" method="POST" class="form-group col-md-6 bg-light card mx-auto m-auto p-8">
+       {%csrf_token%}
+       <legend>Logout</legend>
+        {{form|crispy}}
+        <button type="submit" class="form-group btn btn-outline-primary mr-auto">Register</button>
+   </form>
+</div>
+{%endblock content%}

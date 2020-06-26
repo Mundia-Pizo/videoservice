@@ -1,0 +1,24 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="col-md-9 m-auto mx-auto row ml-20">
+            <div class="row navbar nav">
+                <a class="navbar-brand" href="/">CodeMadeSimple</a>
+            </div>
+            
+        <div class="row ml-auto navbar nav">
+            <ul class="row">
+                {%if user.is_authenticated%}
+                    <li class="ml-2 mr-2">{{user.username}}</li>
+                {%endif%}
+                <li class="ml-2 mr-2">About</li>
+                <li class="ml-2 mr-2">Blogs</li>
+                {%if user.is_authenticated%}
+                     <li class="ml-2 mr-2"><a href={%url 'logout'%}>logout</a> </li>
+                {%else%}
+                     <li class="ml-2 mr-2"><a href={%url 'login'%}>login</a> </li>
+                     <li class="ml-2 mr-2"><a href={%url 'register'%}>register</a> </li>
+                {%endif%}
+            </ul>
+        </div>  
+    </div> 
+</nav>
+  

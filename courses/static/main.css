@@ -1,0 +1,12 @@
+ul, li{
+    list-style: none;
+}
+.imag-style{
+    height:auto;
+    width:220px;
+    object-fit:cover;
+    position:center;
+    justify-content:center;
+    align-items:center;
+
+}

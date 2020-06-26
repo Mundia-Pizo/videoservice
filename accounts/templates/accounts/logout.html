@@ -1,0 +1,8 @@
+{%  extends "layout/layout.html"%}
+{%block content%}
+   <form action="" method="POST" class="form-group col-md-6 bg-light">
+       {%csrf_token%}
+       <legend>Logout</legend>
+        <p>You are currentlu loged out of the system</p>
+   </form>
+{%endblock content%}
