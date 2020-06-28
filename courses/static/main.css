@@ -1,4 +1,5 @@
-ul, li{
+
+.list-control{
     list-style: none;
 }
 .imag-style{
@@ -9,4 +10,25 @@ ul, li{
     justify-content:center;
     align-items:center;
 
+}
+.video-col{
+    background-color: black;
+    border: none;
+}
+
+pre, code{
+    background-color: cornflowerblue;
+    font-family: monospace,monospace;
+}
+pre{
+    overflow: auto;
+}
+pre>code{
+    display: block;
+    padding: 1rem;
+    word-wrap: normal;
+}
+.code-color{
+    background-color: cornflowerblue;
+    object-fit: cover;
 }

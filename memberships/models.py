@@ -2,28 +2,28 @@ from django.db import models
 from django.contrib.auth import settings
 
 CHOICES=(
-    ('pro', 'professional'),
-    ('ent', 'enterprise'),
-    ('free', 'free')
+    ('Professional', 'pro'),
+    ('Enterprise', 'ent'),
+    ('Free', 'free')
 )
 
-class Memebership(models.Model):
+class Membership(models.Model):
     slug   = models.SlugField()
-    membership_type = models.CharField(max_length=4, choices=CHOICES, default='free')
+    membership_type = models.CharField(max_length=52, choices=CHOICES, default='free')
     price  = models.FloatField()
 
     def __str__(self):
         return self.membership_type
 
-class UserMemeberShip(models.Model):
+class UserMemberShip(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    membership = models.ForeignKey(Memebership, on_delete=models.CASCADE)
+    membership = models.ForeignKey(Membership, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user.username
 
 class Subscription(models.Model):
-    user_membership=models.ForeignKey(UserMemeberShip, on_delete=models.CASCADE)
+    user_membership=models.ForeignKey(UserMemberShip, on_delete=models.CASCADE)
     active = models.BooleanField(default=True)
 
 

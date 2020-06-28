@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Membership, UserMemberShip, Subscription
+
+admin.site.register(Membership)
+admin.site.register(UserMemberShip)
+admin.site.register(Subscription)
+
+
+

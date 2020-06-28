@@ -1,8 +1,14 @@
-from django.db.models import signals
-from .models import UserMemeberShip, Memebership, 
+from django.db.models.signals import post_save
+from .models import UserMemberShip, Membership, 
+from django.contrib.auth import settings
 
 def post_save_user_membership(sender, instance,created, *args, **kwargs):
     if created:
-        UserMemeberShip.objects.get_or_create(user=instance)
-    user_membership, created = UserMemeberShip.objects.get_or_create(user=instance)
+        UserMemberShip.objects.get_or_create(user=instance)
+    user_membership, created = UserMemberShip.objects.get_or_create(user=instance)
+
+
+    #where we will put the user connectio to the membership
+    user_membership.save()
     
+post_save.connect(post_save_user_membership, sender=settings.AUTH_USER_MODEL)

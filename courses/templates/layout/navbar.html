@@ -7,15 +7,16 @@
         <div class="row ml-auto navbar nav">
             <ul class="row">
                 {%if user.is_authenticated%}
-                    <li class="ml-2 mr-2">{{user.username}}</li>
+                    <li class="ml-2 mr-2 list-control">{{user.username}}</li>
                 {%endif%}
-                <li class="ml-2 mr-2">About</li>
-                <li class="ml-2 mr-2">Blogs</li>
+                <li class="ml-2 mr-2 list-control">About</li>
+                <li class="ml-2 mr-2 list-control">Blogs</li>
                 {%if user.is_authenticated%}
-                     <li class="ml-2 mr-2"><a href={%url 'logout'%}>logout</a> </li>
+                     <li class="ml-2 mr-2 list-control"><a href={%url 'logout'%}>logout</a> </li>
+                     <li class="ml-2 mr-2 list-control"><a href={%url 'membership'%}>Subscriptions</a></li>
                 {%else%}
-                     <li class="ml-2 mr-2"><a href={%url 'login'%}>login</a> </li>
-                     <li class="ml-2 mr-2"><a href={%url 'register'%}>register</a> </li>
+                     <li class="ml-2 mr-2 list-control"><a href={%url 'login'%}>login</a> </li>
+                     <li class="ml-2 mr-2 list-control"><a href={%url 'register'%}>register</a> </li>
                 {%endif%}
             </ul>
         </div>  

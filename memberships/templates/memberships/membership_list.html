@@ -1,0 +1,32 @@
+{% extends 'layout/layout.html'%}
+{%block content%}
+<h3 class="mt-2">Course Subscription Plans</h3>
+<div class="row">
+    {%for membership in object_list%}
+        <div class="col-sm-4 col-md-4">
+            <h2>{{membership.membership_type}}</h2> 
+            <div class="col mr-auto ">
+                <ol>
+                    {%for course in membership.course_set.all%}
+                        <li class="text-primary">{{course.title}}</li>
+                    {%endfor%}
+                </ol>
+                {%if membership.membership_type != 'Free' %}
+                    <form action="." class="form-group" method="POST">
+                        {%csrf_token%}
+                        {%if membership.membership_type != current_membership %}
+                        <div class="col">
+                            <button type="submit" class="btn btn-warning">Subscribe</button>
+                            <small><strong>Price ${{membership.price}} /month</strong></small>
+                        </div>
+                        {%else%}
+                            <p>This is your current subscription</p>
+                        {%endif%}
+                        <input type="hidden" name="membership_type" value={{membership.membership_type}}/>
+                    </form>
+                 {%endif%}
+            </div>
+        </div>
+    {%endfor%}
+</div> 
+{%endblock content%}

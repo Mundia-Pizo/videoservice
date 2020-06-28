@@ -1,11 +1,13 @@
 from django.db import models
 from django.urls import reverse
+from memberships.models import Membership
 
 class Course(models.Model):
     title       = models.CharField(max_length=200)
     description = models.TextField()
     thumbnail   = models.ImageField(upload_to='course-images')
     slug        = models.SlugField()
+    allowed_membership= models.ManyToManyField(Membership)
 
     def __str__(self):
         return self.title
