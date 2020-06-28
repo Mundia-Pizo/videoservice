@@ -1,0 +1,29 @@
+{% extends "layout/layout.html"%}
+{% load static%}
+{%load crispy_forms_tags%}
+{%block content%}
+<div class="mt-10 mb-5 ">
+    <div class="container col-md-6 mx-auto m-auto">
+        <div class="mx-auto m-auto col-md-8 mt-5">
+            <img class="profile-image " src="{% static 'images/profile.jfif'%}" alt="profile image"/>
+            <h4><strong>Mundia Pizo Stacy</strong></h4>
+        </div>
+        
+        <p>A brief history about myself</p>
+        <p>Am an Electrical, Electronics and Telecommunications Engineer 
+            with a Bachelors Degree in this Field, am a tech enthusiate
+            who likes tinkering with different things.
+        </p>
+        <p>
+            I have been working as a software engineer for the past 5 years and 
+            most of my work has been building websites and mobile applications,
+            Besides i have also been buiding artificial intelligence softwares 
+            such as plant disease detection. Am the CEO of tulio ecommerce website
+            <a href=".">Check it out here. </a>
+            I love equipping other upcoming and intermediate and other proffessional 
+            developers in this field.
+        </p>
+    </div>
+</div>
+
+{%endblock content%}

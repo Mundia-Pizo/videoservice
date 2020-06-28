@@ -32,3 +32,9 @@ pre>code{
     background-color: cornflowerblue;
     object-fit: cover;
 }
+.profile-image{
+    border: 1px solid yellow;
+    height: 200px;
+    width:200px;
+    border-radius: 50%;
+}

@@ -9,7 +9,7 @@
                 {%if user.is_authenticated%}
                     <li class="ml-2 mr-2 list-control">{{user.username}}</li>
                 {%endif%}
-                <li class="ml-2 mr-2 list-control">About</li>
+                <li class="ml-2 mr-2 list-control"><a href={%url 'about'%}>About</a></li>
                 <li class="ml-2 mr-2 list-control">Blogs</li>
                 {%if user.is_authenticated%}
                      <li class="ml-2 mr-2 list-control"><a href={%url 'logout'%}>logout</a> </li>

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import View
+from django.views.generic import View, TemplateView
 from .forms import UserRegistrationForm
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
@@ -19,4 +19,8 @@ class UserRegitrationView(View):
             form.save()
             return redirect('login')
         return render(request, self.template_name, {'form': form})
+
+
+class AboutAuthorView(TemplateView):
+    template_name ='accounts/about.html'
 
