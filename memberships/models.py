@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth import settings
+from django.db.models.signals import post_save
 
 CHOICES=(
-    ('Professional', 'pro'),
-    ('Enterprise', 'ent'),
-    ('Free', 'free')
+    ( 'Professional', 'pro'),
+    ( 'Enterprise', 'ent'),
+    ('Free','free')
 )
 
 class Membership(models.Model):
@@ -17,10 +18,19 @@ class Membership(models.Model):
 
 class UserMemberShip(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    membership = models.ForeignKey(Membership, on_delete=models.CASCADE)
+    membership = models.ForeignKey(Membership, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.user.username
+
+def post_save_user_membership(sender, instance,created, *args, **kwargs):
+    if created:
+        UserMemberShip.objects.get_or_create(user=instance)
+    user_membership, created = UserMemberShip.objects.get_or_create(user=instance)
+    #where we will put the user connectio to the membership
+    user_membership.save()
+    
+post_save.connect(post_save_user_membership, sender=settings.AUTH_USER_MODEL)
 
 class Subscription(models.Model):
     user_membership=models.ForeignKey(UserMemberShip, on_delete=models.CASCADE)

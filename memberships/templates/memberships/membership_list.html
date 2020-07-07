@@ -12,12 +12,14 @@
                     {%endfor%}
                 </ol>
                 {%if membership.membership_type != 'Free' %}
-                    <form action="." class="form-group" method="POST">
+                    <form action="{%url 'membership'%}" class="form-group" method="POST">
                         {%csrf_token%}
                         {%if membership.membership_type != current_membership %}
                         <div class="col">
                             <button type="submit" class="btn btn-warning">Subscribe</button>
                             <small><strong>Price ${{membership.price}} /month</strong></small>
+
+                        <!-- This is the fluterwave script performing all the functionalities -->
                         </div>
                         {%else%}
                             <p>This is your current subscription</p>
@@ -29,4 +31,6 @@
         </div>
     {%endfor%}
 </div> 
+
 {%endblock content%}
+

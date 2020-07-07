@@ -17,4 +17,35 @@
     {% include 'layout/footer.html'%}
 </body>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+    function makePayment() {
+      FlutterwaveCheckout({
+        public_key: "FLWPUBK_TEST-b95de48e62b7a5e93729f723d569fdb2-X",
+        tx_ref: "hooli-tx-1920bbtyt",
+        amount:98,
+        currency: "ZMW",
+        payment_options: "card,mobilemoney,ussd",
+        redirect_url: // specified redirect URL
+          "http://localhost:8000/payment",
+        meta: {
+          consumer_id: "{{user.id}}",
+          consumer_mac: "92a3-912ba-1192a",
+        },
+        customer: {
+          email: "{{user.email}}",
+          phone_number: "{{user.id}}",
+          name: "{{user.username}}",
+        },
+        callback: function (data) {
+          body=JSON.stringify(data)
+          console.log(body)
+        },
+        customizations: {
+          title: "{{user.username}}",
+          description: "Subscription payment",
+          logo: "https://assets.piedpiper.com/logo.png",
+        },
+      });
+    }
+</script>
 </html>

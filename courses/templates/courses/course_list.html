@@ -10,10 +10,8 @@
             <a href={% url 'course-details' course.slug%}>
                 <button class="btn btn-warning ml-auto">View</button>
             </a>
-            {% if course.allowed_membership != 'FREE'%}
-              <p>{{course.allowed_membership.membership_type.membership_type}}</p>
-              <small>{{course.allowed_membership.price}}</small>
-            {% endif %}
+            <p>{{course.membership_type}}</p>
+            <small>{{course.allowed_membership.price}}</small>
         </div>
         {%endfor%}
     </div> 

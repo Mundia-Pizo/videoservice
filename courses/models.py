@@ -7,7 +7,7 @@ class Course(models.Model):
     description = models.TextField()
     thumbnail   = models.ImageField(upload_to='course-images')
     slug        = models.SlugField()
-    allowed_membership= models.ManyToManyField(Membership)
+    allowed_membership = models.ManyToManyField(Membership)
 
     def __str__(self):
         return self.title

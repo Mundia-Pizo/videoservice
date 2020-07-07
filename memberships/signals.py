@@ -6,8 +6,6 @@ def post_save_user_membership(sender, instance,created, *args, **kwargs):
     if created:
         UserMemberShip.objects.get_or_create(user=instance)
     user_membership, created = UserMemberShip.objects.get_or_create(user=instance)
-
-
     #where we will put the user connectio to the membership
     user_membership.save()
     
