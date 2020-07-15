@@ -30,12 +30,18 @@ INSTALLED_APPS = [
     'courses.apps.CoursesConfig',
     'accounts.apps.AccountsConfig',
     'memberships.apps.MembershipsConfig',
-    'crispy_forms'
+    'crispy_forms',
+    'corsheaders',
+
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    ##this is wher the django cors middleware will be 
+    'corsheaders.middleware.CorsMiddleware',
+    ## this is to allow certain cors of ceratin websites 
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -122,4 +128,13 @@ from django.urls import reverse_lazy
 LOGIN_REDIRECT_URL = reverse_lazy('courses')
 
 LOGIN_URL = 'login'
+
+CORS_ORIGIN_WHITELIST=[
+    'https://checkout.flutterwave.com',
+    
+]
+
+
+
+
 

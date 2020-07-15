@@ -40,7 +40,12 @@ class Subscription(models.Model):
     def __str__(self):
         return self.user_membership.user.username
 
+
+class Payments(models.Model):
+    user   = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    amount = models.FloatField()
     
+
     
 
 

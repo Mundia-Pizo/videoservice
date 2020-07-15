@@ -1,8 +1,40 @@
 {%extends 'layout/layout.html'%}
 {%block content%}
-    <h1 class="">Your payment was successful return to <a href="/">courses</a> happy learning</h1>
+    <h4 class="">To continue with you payment click the button bellow</h4>
     <form>
         <script src="https://checkout.flutterwave.com/v3.js"></script>
-        <h5> You are now redy to get started</h5>
+        <button class="btn btn-outline-info" type="button" onClick="makePayment()">Pay Now</button>
     </form>
+    <script>
+        function makePayment() {
+            //let price=document.getElementById('mem').value;
+          FlutterwaveCheckout({
+            public_key: "FLWPUBK_TEST-b95de48e62b7a5e93729f723d569fdb2-X",
+            tx_ref: "hooli-tx-1920bbtyt",
+            //amount: parseFloat(price),
+            amount: 789,
+            currency: "ZMW",
+            payment_options: "card,mobilemoney,ussd",
+            redirect_url: // specified redirect URL
+              "http://localhost:8000/payment",
+            meta: {
+              consumer_id: 12,
+              consumer_mac: "92a3-912ba-1192a",
+            },
+            customer: {
+              email: "{{user.email}}",
+              phone_number: "08102909304",
+              name: "{{user.username}}",
+            },
+            callback: function (data) {
+              console.log(data);
+            },
+            customizations: {
+              title: "Code Made Simple sub@{{user.username}}",
+              description: "Subscription",
+              logo: "https://assets.piedpiper.com/logo.png",
+            },
+          });
+        }
+      </script>
 {%endblock content%}
