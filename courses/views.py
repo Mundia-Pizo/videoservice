@@ -22,7 +22,8 @@ class LessonDetailView(View):
         user_membership_type = user_membership.membership.membership_type
         course_allowed_membership_type = course.allowed_membership.all()
         context={
-            'object':None
+            'object':lesson,
+            'course':course
         }
         if course_allowed_membership_type.filter(membership_type=user_membership).exists():
             context={

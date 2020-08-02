@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, View
-from .models import Membership, UserMemberShip, Subscription
+from .models import Membership, UserMemberShip, Subscription, Payments
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib import messages 
@@ -79,12 +79,70 @@ def paymentView(request):
     return render(request, 'memberships/payment.html', context)
 
 
+class  PaymentRedirectView(ListView):
+    model = Payments
+    template_name='memberships/payment-redirect.html'
 
+    # def get(self, *args,**kwargs):
+    #     payments =Payments.objects.all()
+    #     context={'payments':payments}
+    #     return  context
+
+    # def post(self, *args, **kwargs):
+    #     pass
     
 
 
         
+########### Python 2.7 #############
+# import httplib, urllib, base64
 
+# headers = {
+#     # Request headers
+#     'Authorization': '',
+#     'X-Target-Environment': '',
+#     'Ocp-Apim-Subscription-Key': '{subscription key}',
+# }
+
+# params = urllib.urlencode({
+# })
+
+# try:
+#     conn = httplib.HTTPSConnection('sandbox.momodeveloper.mtn.com')
+#     conn.request("GET", "/collection/v1_0/requesttopay/{referenceId}?%s" % params, "{body}", headers)
+#     response = conn.getresponse()
+#     data = response.read()
+#     print(data)
+#     conn.close()
+# except Exception as e:
+#     print("[Errno {0}] {1}".format(e.errno, e.strerror))
+
+####################################
+
+########### Python 3.2 #############
+import http.client, urllib.request, urllib.parse, urllib.error, base64
+
+headers = {
+    # Request headers
+    'Authorization': '',
+    'X-Target-Environment': '',
+    'Ocp-Apim-Subscription-Key': '{subscription key}',
+}
+
+params = urllib.parse.urlencode({
+})
+
+try:
+    conn = http.client.HTTPSConnection('sandbox.momodeveloper.mtn.com')
+    conn.request("GET", "/collection/v1_0/requesttopay/{referenceId}?%s" % params, "{body}", headers)
+    response = conn.getresponse()
+    data = response.read()
+    print(data)
+    conn.close()
+except Exception as e:
+    print("[Errno {0}] {1}".format(e.errno, e.strerror))
+
+####################################
 
 
 

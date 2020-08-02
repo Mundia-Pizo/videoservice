@@ -1,21 +1,15 @@
 {%extends 'layout/layout.html'%}
 {%block content%}
-<div class="col-md-9 mx-auto m-auto">
-    <h1>{{object.title}}</h1>
-    <video class="video_col mb-5 col-lg-9" controls controlsList="nodownload"
-    poster="{{object.thumbnail.url}}"
-    src="{{object.video_url.url}}"
-    width="720"
-    height="420">
-    Ooops your browser does not support emmbeded videos try Chrome or firefox thanks!!!!!!
-   </video>
-   <div class="code-color language-html">
-        <pre>
-            <code>
-                {{object.description}}
-            </code>  
-        </pre> 
-   </div>
-
+<div class="container-2">
+    <!-- <h1>{{object.title}}</h1> -->
+    <div class="">
+        <iframe src="{{object.video_url}}" width="640" height="480"  frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe> 
+    </div>
+    <div class="">
+        {%for lesson in course.lessons.all%}
+           <h6>{{lesson.title}}</h6>
+        {%endfor%}
+    </div>
+   
 </div>
 {%endblock content%}

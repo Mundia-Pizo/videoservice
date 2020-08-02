@@ -2,7 +2,7 @@
 {%block content%}
     <h4 class="">To continue with you payment click the button bellow</h4>
     <form>
-        <script src="https://checkout.flutterwave.com/v3.js"></script>
+        <script src="https://api.flutterwave.com/v3/payments, "></script>
         <button class="btn btn-outline-info" type="button" onClick="makePayment()">Pay Now</button>
     </form>
     <script>
@@ -10,17 +10,17 @@
             //let price=document.getElementById('mem').value;
           FlutterwaveCheckout({
             public_key: "FLWPUBK_TEST-b95de48e62b7a5e93729f723d569fdb2-X",
-            tx_ref: "hooli-tx-1920bbtyt",
+            tx_ref: "iuhbakjnklad-hygda",
             //amount: parseFloat(price),
             amount: 789,
             currency: "ZMW",
             payment_options: "card,mobilemoney,ussd",
             redirect_url: // specified redirect URL
               "http://localhost:8000/payment",
-            meta: {
+          /*  <meta: {
               consumer_id: 12,
               consumer_mac: "92a3-912ba-1192a",
-            },
+            }, >*/
             customer: {
               email: "{{user.email}}",
               phone_number: "08102909304",
